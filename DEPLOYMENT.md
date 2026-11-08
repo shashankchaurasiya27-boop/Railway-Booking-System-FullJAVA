@@ -168,25 +168,40 @@ source .env
 mvn spring-boot:run
 ```
 
-### Method 4: Docker (Future)
+### Method 4: Docker & Docker Compose (Recommended)
 
-```dockerfile
-# Example Dockerfile
-FROM eclipse-temurin:21-jre
-COPY target/railway-booking-system-1.0.0.jar app.jar
-ENTRYPOINT ["java", "-jar", "/app.jar"]
-```
+The repository includes a production multi-stage `Dockerfile` and `docker-compose.yml` for turnkey container deployment:
 
 ```bash
-# Build and run
-docker build -t railway-booking .
-docker run -e SPRING_PROFILES_ACTIVE=prod \
-           -e DB_URL=jdbc:mysql://db:3306/railway_booking \
-           -e DB_USERNAME=user \
-           -e DB_PASSWORD=pass \
-           -p 8080:8080 \
-           railway-booking
+# 1. Start application and MySQL 8.0 together
+docker compose up -d
+
+# 2. View logs
+docker compose logs -f app
+
+# 3. Stop containers
+docker compose down
 ```
+
+### Method 5: One-Click Cloud Deployment (Railway)
+
+1. Go to [railway.app](https://railway.app) and sign in with GitHub.
+2. Click **New Project** ➔ **Deploy from GitHub repo**.
+3. Select `shashankchaurasiya27-boop/Railway-Booking-System-FullJAVA`.
+4. Click **+ Add Service** ➔ **Database** ➔ **MySQL**.
+5. Connect your service to MySQL using Railway's environment variables:
+   - `DB_URL`: `jdbc:mysql://${{MYSQL_HOST}}:${{MYSQL_PORT}}/${{MYSQL_DATABASE}}?useSSL=false&allowPublicKeyRetrieval=true`
+   - `DB_USERNAME`: `${{MYSQL_USER}}`
+   - `DB_PASSWORD`: `${{MYSQL_PASSWORD}}`
+   - `HEADLESS_MODE`: `true`
+6. Click **Deploy**. Your REST API and database will be live with a public URL!
+
+### Method 6: One-Click Cloud Deployment (Render)
+
+1. Go to [render.com](https://render.com) and create a free account.
+2. Click **New** ➔ **Blueprint**.
+3. Connect your GitHub repository: `Railway-Booking-System-FullJAVA`.
+4. Render will automatically read `render.yaml`, spin up a free PostgreSQL database, build the Docker container, and deploy the application.
 
 ---
 

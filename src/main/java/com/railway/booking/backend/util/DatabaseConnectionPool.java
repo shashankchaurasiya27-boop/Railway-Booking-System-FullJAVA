@@ -36,6 +36,9 @@ public class DatabaseConnectionPool {
                 setDefaultProperties();
             }
 
+            // Environment variable overrides for cloud deployment (Docker, Railway, Render, K8s)
+            applyEnvironmentOverrides();
+
             // Initialize HikariCP connection pool
             initializeConnectionPool();
 
@@ -59,6 +62,30 @@ public class DatabaseConnectionPool {
         properties.setProperty("db.pool.connectionTimeout", "30000");
         properties.setProperty("db.pool.idleTimeout", "600000");
         properties.setProperty("db.pool.maxLifetime", "1800000");
+    }
+
+    /**
+     * Apply environment variable overrides for containerized & cloud deployment
+     */
+    private static void applyEnvironmentOverrides() {
+        String envUrl = System.getenv("DB_URL");
+        if (envUrl != null && !envUrl.trim().isEmpty()) {
+            properties.setProperty("db.url", envUrl.trim());
+            logger.info("Using DB_URL from environment variable");
+        }
+        String envUser = System.getenv("DB_USERNAME");
+        if (envUser != null && !envUser.trim().isEmpty()) {
+            properties.setProperty("db.username", envUser.trim());
+            logger.info("Using DB_USERNAME from environment variable: {}", envUser);
+        }
+        String envPass = System.getenv("DB_PASSWORD");
+        if (envPass != null) {
+            properties.setProperty("db.password", envPass);
+        }
+        String envDriver = System.getenv("DB_DRIVER");
+        if (envDriver != null && !envDriver.trim().isEmpty()) {
+            properties.setProperty("db.driver", envDriver.trim());
+        }
     }
 
     /**

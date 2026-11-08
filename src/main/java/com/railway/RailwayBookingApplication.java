@@ -21,8 +21,19 @@ public class RailwayBookingApplication {
     private static final Logger logger = LoggerFactory.getLogger(RailwayBookingApplication.class);
 
     public static void main(String[] args) {
-        // Spring Boot runs headless by default, we need to bypass it for Swing GUI
-        System.setProperty("java.awt.headless", "false");
+        // Auto-detect if running in headless environment (Docker, Cloud VM, CI/CD)
+        boolean explicitlyHeadless = "true".equalsIgnoreCase(System.getProperty("java.awt.headless"))
+                || "true".equalsIgnoreCase(System.getenv("HEADLESS_MODE"));
+        boolean noDisplay = System.getenv("DISPLAY") == null 
+                && !System.getProperty("os.name", "").toLowerCase().contains("mac")
+                && !System.getProperty("os.name", "").toLowerCase().contains("win");
+
+        if (explicitlyHeadless || noDisplay) {
+            System.setProperty("java.awt.headless", "true");
+        } else {
+            System.setProperty("java.awt.headless", "false");
+        }
+
         logger.info("=== Railway Booking System Starting (Spring Boot) ===");
 
         // Add shutdown hook for cleanup
@@ -92,15 +103,19 @@ public class RailwayBookingApplication {
         // ===================================================================
         // SWING UI CODE
         // ===================================================================
-        logger.info("Launching GUI");
-        SwingUtilities.invokeLater(() -> {
-            try {
-                new LoginFrame().setVisible(true);
-            } catch (Exception e) {
-                logger.error("Failed to launch GUI", e);
-                System.exit(1);
-            }
-        });
+        if (!java.awt.GraphicsEnvironment.isHeadless()) {
+            logger.info("Display detected. Launching Java Swing GUI...");
+            SwingUtilities.invokeLater(() -> {
+                try {
+                    new LoginFrame().setVisible(true);
+                } catch (Exception e) {
+                    logger.error("Failed to launch GUI", e);
+                }
+            });
+        } else {
+            logger.info("Running in HEADLESS mode (Cloud/Server environment). Swing GUI launch skipped.");
+            logger.info("REST API Server is fully active and accepting requests on port: {}", serverPort);
+        }
         logger.info("Application started successfully");
     }
 }
