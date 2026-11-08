@@ -1,0 +1,164 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradients -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a1128" />
+      <stop offset="50%" stop-color="#001f54" />
+      <stop offset="100%" stop-color="#034078" />
+    </linearGradient>
+    <linearGradient id="trainGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00b4d8" />
+      <stop offset="50%" stop-color="#48cae4" />
+      <stop offset="100%" stop-color="#90e0ef" />
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffd166" />
+      <stop offset="100%" stop-color="#f77f00" />
+    </linearGradient>
+    <linearGradient id="glowGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#00f5d4" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#00f5d4" stop-opacity="0" />
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000000" flood-opacity="0.6"/>
+    </filter>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <style>
+    .title { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-weight: 900; font-size: 52px; fill: #ffffff; letter-spacing: 1.5px; }
+    .subtitle { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-weight: 500; font-size: 20px; fill: #ade8f4; letter-spacing: 0.5px; }
+    .tagline { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-weight: 700; font-size: 14px; fill: #ffd166; letter-spacing: 3px; text-transform: uppercase; }
+    .badge-text { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-weight: 600; font-size: 13px; fill: #ffffff; }
+    .grid-line { stroke: #ffffff; stroke-opacity: 0.04; stroke-width: 1; }
+    .track-rail { stroke: #00b4d8; stroke-width: 3; stroke-opacity: 0.6; }
+    .track-tie { stroke: #48cae4; stroke-width: 2; stroke-opacity: 0.3; }
+  </style>
+
+  <!-- Background -->
+  <rect width="1200" height="400" fill="url(#bgGrad)" />
+
+  <!-- Geometric Grid Background Pattern -->
+  <line x1="0" y1="50" x2="1200" y2="50" class="grid-line" />
+  <line x1="0" y1="100" x2="1200" y2="100" class="grid-line" />
+  <line x1="0" y1="150" x2="1200" y2="150" class="grid-line" />
+  <line x1="0" y1="200" x2="1200" y2="200" class="grid-line" />
+  <line x1="0" y1="250" x2="1200" y2="250" class="grid-line" />
+  <line x1="0" y1="300" x2="1200" y2="300" class="grid-line" />
+  <line x1="0" y1="350" x2="1200" y2="350" class="grid-line" />
+  
+  <line x1="100" y1="0" x2="100" y2="400" class="grid-line" />
+  <line x1="300" y1="0" x2="300" y2="400" class="grid-line" />
+  <line x1="500" y1="0" x2="500" y2="400" class="grid-line" />
+  <line x1="700" y1="0" x2="700" y2="400" class="grid-line" />
+  <line x1="900" y1="0" x2="900" y2="400" class="grid-line" />
+  <line x1="1100" y1="0" x2="1100" y2="400" class="grid-line" />
+
+  <!-- Speed Glow Wave on Bottom -->
+  <polygon points="0,400 1200,400 1200,320 0,360" fill="url(#glowGrad)" />
+
+  <!-- Railway Tracks (Perspective) -->
+  <line x1="0" y1="380" x2="1200" y2="350" class="track-rail" />
+  <line x1="0" y1="395" x2="1200" y2="365" class="track-rail" />
+  <line x1="150" y1="376" x2="150" y2="391" class="track-tie" />
+  <line x1="300" y1="372" x2="300" y2="387" class="track-tie" />
+  <line x1="450" y1="368" x2="450" y2="383" class="track-tie" />
+  <line x1="600" y1="365" x2="600" y2="380" class="track-tie" />
+  <line x1="750" y1="361" x2="750" y2="376" class="track-tie" />
+  <line x1="900" y1="357" x2="900" y2="372" class="track-tie" />
+  <line x1="1050" y1="354" x2="1050" y2="369" class="track-tie" />
+
+  <!-- Left Content Area -->
+  <g transform="translate(80, 75)">
+    <!-- Category Tag -->
+    <rect x="0" y="0" width="220" height="26" rx="13" fill="#001233" stroke="#ffd166" stroke-width="1.2" />
+    <text x="110" y="17" text-anchor="middle" class="tagline">Enterprise Solution</text>
+
+    <!-- Main Title -->
+    <text x="0" y="75" class="title" filter="url(#shadow)">
+      RAILWAY BOOKING SYSTEM
+    </text>
+
+    <!-- Subtitle -->
+    <text x="0" y="120" class="subtitle">
+      Full-Stack Java Enterprise Edition • Spring Boot 3.2 • Java Swing UI
+    </text>
+    <text x="0" y="148" class="subtitle" font-size="16" fill="#90e0ef">
+      High-Concurrency Ticket Engine • Virtual Threads • Multi-Database Support
+    </text>
+
+    <!-- Badges Row -->
+    <g transform="translate(0, 185)">
+      <!-- Badge 1: Java 21 LTS -->
+      <g transform="translate(0, 0)">
+        <rect width="115" height="34" rx="8" fill="#1b2a4a" stroke="#00b4d8" stroke-width="1.2" />
+        <circle cx="20" cy="17" r="6" fill="#e76f51" />
+        <text x="34" y="22" class="badge-text">Java 21 LTS</text>
+      </g>
+
+      <!-- Badge 2: Spring Boot 3.2 -->
+      <g transform="translate(127, 0)">
+        <rect width="138" height="34" rx="8" fill="#1b2a4a" stroke="#00b4d8" stroke-width="1.2" />
+        <circle cx="20" cy="17" r="6" fill="#6db33f" />
+        <text x="34" y="22" class="badge-text">Spring Boot 3.2</text>
+      </g>
+
+      <!-- Badge 3: Swing Desktop -->
+      <g transform="translate(277, 0)">
+        <rect width="135" height="34" rx="8" fill="#1b2a4a" stroke="#00b4d8" stroke-width="1.2" />
+        <circle cx="20" cy="17" r="6" fill="#00b4d8" />
+        <text x="34" y="22" class="badge-text">Swing Desktop</text>
+      </g>
+
+      <!-- Badge 4: MySQL & Postgres -->
+      <g transform="translate(424, 0)">
+        <rect width="145" height="34" rx="8" fill="#1b2a4a" stroke="#00b4d8" stroke-width="1.2" />
+        <circle cx="20" cy="17" r="6" fill="#f4a261" />
+        <text x="34" y="22" class="badge-text">MySQL / Postgres</text>
+      </g>
+
+      <!-- Badge 5: HikariCP -->
+      <g transform="translate(581, 0)">
+        <rect width="105" height="34" rx="8" fill="#1b2a4a" stroke="#00b4d8" stroke-width="1.2" />
+        <circle cx="20" cy="17" r="6" fill="#e9d8a6" />
+        <text x="34" y="22" class="badge-text">HikariCP</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Right Visual: Futuristic High-Speed Train Graphic -->
+  <g transform="translate(860, 60)" filter="url(#shadow)">
+    <!-- Glow behind locomotive -->
+    <ellipse cx="140" cy="160" rx="160" ry="80" fill="#00b4d8" fill-opacity="0.25" filter="url(#glow)"/>
+
+    <!-- Locomotive Body -->
+    <path d="M -20,200 L 80,200 Q 220,195 270,150 Q 290,130 270,120 L 220,110 Q 150,90 20,90 L -20,90 Z" fill="url(#trainGrad)" />
+    
+    <!-- Locomotive Window / Aerodynamic Cockpit -->
+    <path d="M 160,110 Q 220,115 250,135 Q 220,140 170,130 Z" fill="#001845" opacity="0.9" stroke="#90e0ef" stroke-width="1" />
+    
+    <!-- Accent Speed Stripes -->
+    <path d="M -20,145 L 210,145 Q 235,145 250,155" stroke="#ffd166" stroke-width="5" fill="none" stroke-linecap="round" />
+    <path d="M -20,160 L 190,160 Q 215,160 230,170" stroke="#ffffff" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.8" />
+    
+    <!-- Train Headlight Beams -->
+    <polygon points="275,145 380,120 390,180 275,155" fill="url(#goldGrad)" opacity="0.3" filter="url(#glow)" />
+    <circle cx="270" cy="148" r="8" fill="#ffffff" filter="url(#glow)" />
+
+    <!-- Passenger Coach Connection -->
+    <rect x="-100" y="95" width="70" height="100" rx="6" fill="#0077b6" />
+    <rect x="-85" y="115" width="20" height="25" rx="3" fill="#90e0ef" opacity="0.7" />
+    <rect x="-55" y="115" width="20" height="25" rx="3" fill="#90e0ef" opacity="0.7" />
+
+    <!-- Wheels / Bogie Highlights -->
+    <circle cx="20" cy="205" r="16" fill="#03045e" stroke="#48cae4" stroke-width="3" />
+    <circle cx="20" cy="205" r="6" fill="#90e0ef" />
+    <circle cx="80" cy="205" r="16" fill="#03045e" stroke="#48cae4" stroke-width="3" />
+    <circle cx="80" cy="205" r="6" fill="#90e0ef" />
+    <circle cx="-65" cy="205" r="16" fill="#03045e" stroke="#48cae4" stroke-width="3" />
+    <circle cx="-65" cy="205" r="6" fill="#90e0ef" />
+  </g>
+</svg>

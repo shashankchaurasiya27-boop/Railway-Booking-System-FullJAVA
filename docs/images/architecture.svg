@@ -1,0 +1,160 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 620" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b132b" />
+      <stop offset="100%" stop-color="#1c2541" />
+    </linearGradient>
+    <linearGradient id="boxGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e3d59" />
+      <stop offset="100%" stop-color="#17252a" />
+    </linearGradient>
+    <filter id="cardShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <style>
+    .header-text { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 800; font-size: 26px; fill: #ffffff; }
+    .sub-text { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 400; font-size: 14px; fill: #90e0ef; }
+    .tier-title { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 700; font-size: 16px; fill: #ffd166; letter-spacing: 1px; }
+    .box-title { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 700; font-size: 14px; fill: #ffffff; }
+    .box-desc { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 400; font-size: 11px; fill: #ade8f4; }
+    .conn-line { stroke: #00b4d8; stroke-width: 2; stroke-dasharray: 4,4; }
+  </style>
+
+  <!-- Background -->
+  <rect width="1000" height="620" rx="16" fill="url(#bg2)" stroke="#00b4d8" stroke-width="1.5" />
+
+  <!-- Header Title -->
+  <g transform="translate(40, 45)">
+    <text class="header-text">SYSTEM ARCHITECTURE</text>
+    <text y="24" class="sub-text">Hybrid Desktop GUI + Microservice REST Backend with Concurrency &amp; Thread Safety</text>
+  </g>
+
+  <!-- 1. PRESENTATION TIER -->
+  <g transform="translate(40, 100)">
+    <rect width="920" height="95" rx="10" fill="#001845" stroke="#48cae4" stroke-width="1" filter="url(#cardShadow)"/>
+    <text x="20" y="25" class="tier-title">1. PRESENTATION LAYER (CLIENTS)</text>
+
+    <!-- Swing Desktop GUI -->
+    <g transform="translate(20, 38)">
+      <rect width="270" height="46" rx="6" fill="#03045e" stroke="#0077b6" stroke-width="1.2"/>
+      <text x="15" y="20" class="box-title">Java Swing Desktop GUI</text>
+      <text x="15" y="36" class="box-desc">LoginFrame • TrainSearchFrame • BookingFrame</text>
+    </g>
+
+    <!-- Admin Panel -->
+    <g transform="translate(315, 38)">
+      <rect width="270" height="46" rx="6" fill="#03045e" stroke="#0077b6" stroke-width="1.2"/>
+      <text x="15" y="20" class="box-title">Admin Management UI</text>
+      <text x="15" y="36" class="box-desc">AdminFrame • ProfileFrame • MyBookingsFrame</text>
+    </g>
+
+    <!-- External / REST Clients -->
+    <g transform="translate(610, 38)">
+      <rect width="290" height="46" rx="6" fill="#03045e" stroke="#0077b6" stroke-width="1.2"/>
+      <text x="15" y="20" class="box-title">REST API Clients</text>
+      <text x="15" y="36" class="box-desc">Web App / Mobile PWA / Postman / cURL</text>
+    </g>
+  </g>
+
+  <!-- 2. CONTROLLER & API TIER -->
+  <g transform="translate(40, 215)">
+    <rect width="920" height="100" rx="10" fill="#001f54" stroke="#00b4d8" stroke-width="1" filter="url(#cardShadow)"/>
+    <text x="20" y="25" class="tier-title">2. CONTROLLER &amp; API GATEWAY LAYER</text>
+
+    <g transform="translate(20, 38)">
+      <rect width="165" height="50" rx="6" fill="#0a1128" stroke="#0077b6" stroke-width="1"/>
+      <text x="10" y="20" class="box-title">AuthRestController</text>
+      <text x="10" y="38" class="box-desc">/api/auth/login</text>
+    </g>
+
+    <g transform="translate(200, 38)">
+      <rect width="165" height="50" rx="6" fill="#0a1128" stroke="#0077b6" stroke-width="1"/>
+      <text x="10" y="20" class="box-title">TrainRestController</text>
+      <text x="10" y="38" class="box-desc">/api/trains/search</text>
+    </g>
+
+    <g transform="translate(380, 38)">
+      <rect width="175" height="50" rx="6" fill="#0a1128" stroke="#0077b6" stroke-width="1"/>
+      <text x="10" y="20" class="box-title">BookingRestController</text>
+      <text x="10" y="38" class="box-desc">/api/bookings</text>
+    </g>
+
+    <g transform="translate(570, 38)">
+      <rect width="165" height="50" rx="6" fill="#0a1128" stroke="#0077b6" stroke-width="1"/>
+      <text x="10" y="20" class="box-title">PaymentController</text>
+      <text x="10" y="38" class="box-desc">/api/payments</text>
+    </g>
+
+    <g transform="translate(750, 38)">
+      <rect width="150" height="50" rx="6" fill="#0a1128" stroke="#0077b6" stroke-width="1"/>
+      <text x="10" y="20" class="box-title">HealthCheck</text>
+      <text x="10" y="38" class="box-desc">/api/health • Actuator</text>
+    </g>
+  </g>
+
+  <!-- 3. SERVICE & CONCURRENCY TIER -->
+  <g transform="translate(40, 335)">
+    <rect width="920" height="115" rx="10" fill="#034078" stroke="#48cae4" stroke-width="1" filter="url(#cardShadow)"/>
+    <text x="20" y="25" class="tier-title">3. CORE BUSINESS LOGIC &amp; CONCURRENCY ENGINE</text>
+
+    <g transform="translate(20, 38)">
+      <rect width="210" height="60" rx="6" fill="#001845" stroke="#ffd166" stroke-width="1.2"/>
+      <text x="12" y="22" class="box-title" fill="#ffd166">ConcurrentBookingService</text>
+      <text x="12" y="38" class="box-desc">3-Layer Concurrency Protection</text>
+      <text x="12" y="52" class="box-desc">ReentrantLock • Fair Queuing</text>
+    </g>
+
+    <g transform="translate(245, 38)">
+      <rect width="210" height="60" rx="6" fill="#001845" stroke="#00b4d8" stroke-width="1"/>
+      <text x="12" y="22" class="box-title">SeatAvailabilityService</text>
+      <text x="12" y="38" class="box-desc">Coach Inventory (SL, AC, GEN)</text>
+      <text x="12" y="52" class="box-desc">Real-time Available/Wait Count</text>
+    </g>
+
+    <g transform="translate(470, 38)">
+      <rect width="210" height="60" rx="6" fill="#001845" stroke="#00b4d8" stroke-width="1"/>
+      <text x="12" y="22" class="box-title">VirtualThreadExecutor</text>
+      <text x="12" y="38" class="box-desc">Java 21 Project Loom Fibers</text>
+      <text x="12" y="52" class="box-desc">High-Throughput Non-blocking I/O</text>
+    </g>
+
+    <g transform="translate(695, 38)">
+      <rect width="205" height="60" rx="6" fill="#001845" stroke="#00b4d8" stroke-width="1"/>
+      <text x="12" y="22" class="box-title">BookingLifecycleService</text>
+      <text x="12" y="38" class="box-desc">PNR 10-Digit Generator</text>
+      <text x="12" y="52" class="box-desc">RAC Auto-Promotion Chain</text>
+    </g>
+  </g>
+
+  <!-- 4. DATA ACCESS & PERSISTENCE TIER -->
+  <g transform="translate(40, 470)">
+    <rect width="920" height="115" rx="10" fill="#0a1128" stroke="#00b4d8" stroke-width="1" filter="url(#cardShadow)"/>
+    <text x="20" y="25" class="tier-title">4. PERSISTENCE &amp; CONNECTION POOL LAYER</text>
+
+    <!-- HikariCP -->
+    <g transform="translate(20, 38)">
+      <rect width="260" height="60" rx="6" fill="#1b2a4a" stroke="#ffd166" stroke-width="1.2"/>
+      <text x="15" y="22" class="box-title" fill="#ffd166">HikariCP / Commons DBCP2</text>
+      <text x="15" y="38" class="box-desc">High-Performance Connection Pooling</text>
+      <text x="15" y="52" class="box-desc">SERIALIZABLE Transaction Isolation</text>
+    </g>
+
+    <!-- DAO Layer -->
+    <g transform="translate(295, 38)">
+      <rect width="310" height="60" rx="6" fill="#1b2a4a" stroke="#00b4d8" stroke-width="1"/>
+      <text x="15" y="22" class="box-title">Data Access Objects (DAO)</text>
+      <text x="15" y="38" class="box-desc">UserDAO • TrainDAO • RouteDAO • TicketDAO</text>
+      <text x="15" y="52" class="box-desc">BookingDAO • TrainSeatDAO • PaymentDAO</text>
+    </g>
+
+    <!-- Database Engines -->
+    <g transform="translate(620, 38)">
+      <rect width="280" height="60" rx="6" fill="#1b2a4a" stroke="#48cae4" stroke-width="1"/>
+      <text x="15" y="22" class="box-title">Databases (Multi-Profile)</text>
+      <text x="15" y="38" class="box-desc">🐬 MySQL 8.0+ (Default / dev profile)</text>
+      <text x="15" y="52" class="box-desc">🐘 PostgreSQL 12+ (postgres) • H2 (test)</text>
+    </g>
+  </g>
+</svg>
