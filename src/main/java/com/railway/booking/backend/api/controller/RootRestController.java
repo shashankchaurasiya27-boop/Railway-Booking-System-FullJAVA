@@ -37,3 +37,4 @@ public class RootRestController {
         return ResponseEntity.ok(response);
     }
 }
+
