@@ -141,9 +141,16 @@ public class HealthCheckController {
                 db.put("status", "UP");
                 db.put("message", "Database connection successful");
 
-                // Get database info
-                String dbName = jdbcTemplate.queryForObject(
-                        "SELECT DATABASE()", String.class);
+                // Get database info (compatible with PostgreSQL and MySQL)
+                String dbName = "database";
+                try {
+                    dbName = jdbcTemplate.queryForObject("SELECT current_database()", String.class);
+                } catch (Exception e1) {
+                    try {
+                        dbName = jdbcTemplate.queryForObject("SELECT DATABASE()", String.class);
+                    } catch (Exception ignored) {
+                    }
+                }
                 db.put("database", dbName);
 
                 String dbVersion = jdbcTemplate.queryForObject(

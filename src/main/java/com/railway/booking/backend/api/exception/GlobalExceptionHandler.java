@@ -166,6 +166,19 @@ public class GlobalExceptionHandler {
     }
 
     /**
+     * Handle resource not found / unmapped URL exceptions
+     * Returns 404 Not Found
+     */
+    @ExceptionHandler(org.springframework.web.servlet.resource.NoResourceFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ResponseEntity<ErrorResponse> handleNoResourceFound(org.springframework.web.servlet.resource.NoResourceFoundException ex) {
+        ErrorResponse error = new ErrorResponse(
+                "Not Found",
+                "Endpoint not found: " + ex.getResourcePath());
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
+    }
+
+    /**
      * Handle all other uncaught exceptions
      * Returns 500 Internal Server Error
      */
